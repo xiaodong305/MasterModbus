@@ -16,19 +16,27 @@ stm32f407 CubeMx
 
 6.添加发送完成中断  
 		ModbusMasterDealType.SetTxRxModeCall(MasterModbusRxEn);
+                
 		ModbusMasterDealType.tx_finish_flag = 1;
+                
 		
 7.添加接收完成中断 
    	ModbusMasterDealType.SetTxRxModeCall(MasterModbusTxEn);
-		ModbusMasterDealType.rx_finish_flag = 1;
-		ModbusMasterDealType.Receive.len = len;
+        
+        ModbusMasterDealType.rx_finish_flag = 1;
+                
+        ModbusMasterDealType.Receive.len = len;
+                
 		
-8.在main函数中添加 ModbusMasterDealType.InitCall(&ModbusMasterDealType);//Modbus主机初始化
+8.在main函数中添加 
+ModbusMasterDealType.InitCall(&ModbusMasterDealType);//Modbus主机初始化
 
-9.在定时器中添加超时判断  在1ms毫秒定时器中添加 ModbusMasterDealType.TimeOutCall(&ModbusMasterDealType);
+9.在定时器中添加超时判断  在1ms毫秒定时器中添加 
+ModbusMasterDealType.TimeOutCall(&ModbusMasterDealType);
 
 10.在while死循环中添加 	  
 ModbusMasterDealType.ReceiveTaskDealCall(&ModbusMasterDealType);
+
 ModbusMasterDealType.SendTaskDealCall(&ModbusMasterDealType);
  
  个人能力有限，仅供参考，
