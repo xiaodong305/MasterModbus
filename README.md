@@ -3,12 +3,9 @@ stm32f407 CubeMx
 
 0.相关串口初始化 优先考虑 uart + dma 接收空闲中断 
 
-1.修改寄存器词典以及 
-	ModbusMasterReceiveReadCmdDeal 
-	函数
+1.修改寄存器词典以及 ModbusMasterReceiveReadCmdDeal 函数
 
-2.修改发送接口 重写 ModbusMasterStartSendBufferFun 函数  发送数据填充到 ModbusMasterDealType.Send.Buffer 
-    并把数组中的数据发出
+2.修改发送接口 重写 ModbusMasterStartSendBufferFun 函数  发送数据填充到 ModbusMasterDealType.Send.Buffer 并把数组中的数据发出
     
 3.修改发送接收数据长度  在ModbusMaster.h 中 MasterModbusSENDBUFF_SIZE  MasterModbusRECEIVEBUFF_SIZE 修改
 
@@ -18,9 +15,9 @@ stm32f407 CubeMx
 
 6.添加发送完成中断  
 		
-		ModbusMasterDealType.SetTxRxModeCall(MasterModbusRxEn);
+	ModbusMasterDealType.SetTxRxModeCall(MasterModbusRxEn);
                 
-		ModbusMasterDealType.tx_finish_flag = 1;
+	ModbusMasterDealType.tx_finish_flag = 1;
                 
 		
 7.添加接收完成中断 
